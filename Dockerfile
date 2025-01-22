@@ -30,3 +30,6 @@ EXPOSE 80
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
+
+#docker build -t forlink-frontend .
+#docker run --name forlink-frontend --network forlink-network -d -p 80:80 forlink-frontend
