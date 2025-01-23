@@ -33,3 +33,10 @@ CMD ["nginx", "-g", "daemon off;"]
 
 #docker build -t forlink-frontend .
 #docker run --name forlink-frontend --network forlink-network -d -p 80:80 forlink-frontend
+
+
+#kubectl apply -f forlink-frontend-deployment.yaml
+#kubectl apply -f forlink-frontend-service.yaml
+#kubectl apply -f forlink-frontend-ingress.yaml
+
+

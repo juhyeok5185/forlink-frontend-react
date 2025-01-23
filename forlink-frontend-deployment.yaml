@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forlink-frontend-deployment
+  labels:
+    app: forlink-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forlink-frontend
+  template:
+    metadata:
+      labels:
+        app: forlink-frontend
+    spec:
+      containers:
+        - name: forlink-frontend
+          image: forlink-frontend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
