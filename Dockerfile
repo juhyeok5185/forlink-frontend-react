@@ -15,5 +15,5 @@ CMD ["nginx", "-g", "daemon off;"]
 #kubectl delete deployment forlink-frontend
 #kubectl delete service forlink-frontend-service
 #docker build -t forlink-frontend:latest .
-#kubectl apply -f forlink-frontend-deployment.yaml
-#kubectl apply -f forlink-frontend-service.yaml
+kubectl apply -f forlink-frontend-deployment.yaml
+kubectl apply -f forlink-frontend-service.yaml
