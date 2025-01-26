@@ -1,42 +1,19 @@
-# Dockerfile
-# Step 1: Build the React project using Vite
-FROM node:18-alpine as builder
-
+FROM node:20-alpine AS build
 WORKDIR /app
-
-# Copy package.json and package-lock.json (if available)
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install
-
-# Copy the rest of the application code
 COPY . .
-
-# Build the project
 RUN npm run build
 
-# Step 2: Serve with Nginx
-FROM nginx:stable-alpine
-
-# Copy the build output to Nginx's HTML directory
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy custom Nginx configuration
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80
 EXPOSE 80
-
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
 
-#docker build -t forlink-frontend .
-#docker run --name forlink-frontend --network forlink-network -d -p 80:80 forlink-frontend
 
-
+#kubectl delete deployment forlink-frontend
+#kubectl delete service forlink-frontend-service
+#docker build -t forlink-frontend:latest .
 #kubectl apply -f forlink-frontend-deployment.yaml
 #kubectl apply -f forlink-frontend-service.yaml
-#kubectl apply -f forlink-frontend-ingress.yaml
-
-
