@@ -3,6 +3,7 @@ import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/auth/Login';
+import './index.css'
 
 function App() {
     return (
