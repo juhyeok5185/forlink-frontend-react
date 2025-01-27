@@ -4,20 +4,11 @@ metadata:
   name: forlink-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
 spec:
   ingressClassName: nginx
   rules:
     - http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: forlink-frontend-service
-                port:
-                  number: 80
-
           - path: /api/nation
             pathType: Prefix
             backend:
@@ -25,7 +16,6 @@ spec:
                 name: forlink-nation-service
                 port:
                   number: 10000
-
           - path: /api/member
             pathType: Prefix
             backend:
@@ -33,3 +23,10 @@ spec:
                 name: forlink-member-service
                 port:
                   number: 10001
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: forlink-frontend-service
+                port:
+                  number: 80
