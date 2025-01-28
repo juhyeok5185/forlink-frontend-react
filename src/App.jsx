@@ -3,6 +3,7 @@ import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/auth/Login';
+import MemberSave from "./pages/auth/MemberSave.jsx";
 import './index.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                     <Route path="about" element={<About />} />
                 </Route>
                 <Route path="/login" element={<Login />} />
+                <Route path="/membersave" element={<MemberSave />} />
             </Routes>
         </Router>
     );
