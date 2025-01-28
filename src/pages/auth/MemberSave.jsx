@@ -31,7 +31,7 @@ const MemberSave = () => {
     };
 
     // 회원가입 처리
-    const handleSave = async () => {
+    const saveMember = async () => {
         try {
             const response = await fetch("http://localhost:10001/api/member", {
                 method: "POST",
@@ -89,7 +89,7 @@ const MemberSave = () => {
                 </select>
 
                 <button
-                    onClick={handleSave}
+                    onClick={saveMember}
                     className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
                 >
                     회원가입
